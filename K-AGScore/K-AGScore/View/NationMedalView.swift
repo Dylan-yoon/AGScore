@@ -9,12 +9,20 @@ import UIKit
 
 class NationMedalView: UIView {
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
     let title: UILabel = {
         let title = UILabel()
         
         title.font = .preferredFont(forTextStyle: .title3)
         title.textAlignment = .center
-        title.font = UIFont.boldSystemFont(ofSize: 30)
         title.text = "Republic OF Korea"
         title.textColor = .label
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +75,20 @@ class NationMedalView: UIView {
         return title
     }()
     
-    private let medalStackView: UIStackView = {
+    let nationStackView: UIStackView = {
+        let stackView = UIStackView()
+        
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 2
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
+        return stackView
+    }()
+    
+    let medalStackView: UIStackView = {
         let stackView = UIStackView()
         
         stackView.axis = .horizontal
@@ -93,21 +114,23 @@ class NationMedalView: UIView {
     
     private func configureUI() {
         self.addSubview(medalsImage)
-        self.addSubview(title)
         self.addSubview(medalStackView)
+        self.addSubview(nationStackView)
         
         [gold, silver, bronze].forEach { medalStackView.addArrangedSubview($0) }
+        [imageView, title].forEach { nationStackView.addArrangedSubview($0) }
     }
     
     private func setupConstraints() {
         self.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
-        
+        nationStackView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            title.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-            title.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            nationStackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+            nationStackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+            nationStackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
-            medalsImage.topAnchor.constraint(equalTo: self.title.bottomAnchor, constant: 10),
+            
+            medalsImage.topAnchor.constraint(equalTo: nationStackView.bottomAnchor, constant: 10),
             medalsImage.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             medalsImage.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
@@ -117,13 +140,12 @@ class NationMedalView: UIView {
             medalStackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
         ])
     }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    func configureView(_ data: ScoreData) {
+        imageView.image = UIImage(named: data.alpha3)
+        title.text = data.nation
+        gold.text = data.gold
+        silver.text = data.silver
+        bronze.text = data.bronze
     }
-    */
-
 }
