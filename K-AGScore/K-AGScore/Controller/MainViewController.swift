@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     private var datas: [ScoreData]?
     
     private let koreaMedalView: UIView = {
-        let view = KoreaMedalView()
+        let view = NationMedalView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view

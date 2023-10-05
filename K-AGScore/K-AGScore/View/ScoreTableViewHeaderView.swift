@@ -14,7 +14,7 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "순위"
-        label.textColor = .white
+        label.textColor = .systemGray6
         
         return label
     }()
@@ -23,7 +23,7 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
         label.text = "국가"
-        label.textColor = .white
+        label.textColor = .systemGray6
 
         return label
     }()
@@ -33,7 +33,7 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
         label.text = "금"
-        label.textColor = .white
+        label.textColor = .systemGray6
 
         return label
     }()
@@ -43,7 +43,7 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
         label.text = "은"
-        label.textColor = .white
+        label.textColor = .systemGray6
 
         return label
     }()
@@ -53,7 +53,7 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
         label.text = "동"
-        label.textColor = .white
+        label.textColor = .systemGray6
 
         return label
     }()
@@ -63,7 +63,7 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
         label.text = "합계"
-        label.textColor = .white
+        label.textColor = .systemGray6
 
         return label
     }()
@@ -122,12 +122,12 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
         scoreStackView.addArrangedSubview(medalStackView)
         
         contentView.addSubview(scoreStackView)
-        contentView.backgroundColor = .systemBlue
+        contentView.backgroundColor = .systemOrange
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            scoreStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            scoreStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             scoreStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
             scoreStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             scoreStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),

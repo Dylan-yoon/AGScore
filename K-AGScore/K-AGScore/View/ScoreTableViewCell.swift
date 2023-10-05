@@ -106,7 +106,7 @@ final class ScoreTableViewCell: UITableViewCell {
     
     func configureCell(data: ScoreData) {
         rankLabel.text = data.rank
-        flagImage.image = UIImage(named: "KOR")
+        flagImage.image = UIImage(named: data.alpha3)
         nationLabel.text = data.nation
         goldLabel.text = data.gold
         silverLabel.text = data.silver
