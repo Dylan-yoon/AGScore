@@ -15,6 +15,7 @@
 		171D02A02ACEE890000B8E6F /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D029F2ACEE890000B8E6F /* ScoreData.swift */; };
 		171D02A32ACEE8EF000B8E6F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D02A22ACEE8EF000B8E6F /* NetworkManager.swift */; };
 		171D02A62ACEE98E000B8E6F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 171D02A52ACEE98E000B8E6F /* SwiftSoup */; };
+		171D02A82ACEF49F000B8E6F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D02A72ACEF49F000B8E6F /* NetworkError.swift */; };
 		44FC5B752ACEBB600092E412 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC5B742ACEBB600092E412 /* ScoreTableViewCell.swift */; };
 		44FC5B982ACECA8D0092E412 /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC5B972ACECA8D0092E412 /* UITableViewCell+.swift */; };
 		44FC5B9B2ACECABC0092E412 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FC5B9A2ACECABC0092E412 /* ReuseIdentifiable.swift */; };
@@ -30,6 +31,7 @@
 		171D02962ACEB42B000B8E6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		171D029F2ACEE890000B8E6F /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
 		171D02A22ACEE8EF000B8E6F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		171D02A72ACEF49F000B8E6F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		44FC5B742ACEBB600092E412 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
 		44FC5B972ACECA8D0092E412 /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
 		44FC5B9A2ACECABC0092E412 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				171D029F2ACEE890000B8E6F /* ScoreData.swift */,
 				171D02A22ACEE8EF000B8E6F /* NetworkManager.swift */,
+				171D02A72ACEF49F000B8E6F /* NetworkError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				44FC5B982ACECA8D0092E412 /* UITableViewCell+.swift in Sources */,
 				171D02A32ACEE8EF000B8E6F /* NetworkManager.swift in Sources */,
 				44FC5B9B2ACECABC0092E412 /* ReuseIdentifiable.swift in Sources */,
+				171D02A82ACEF49F000B8E6F /* NetworkError.swift in Sources */,
 				171D02A02ACEE890000B8E6F /* ScoreData.swift in Sources */,
 				171D028B2ACEB429000B8E6F /* SceneDelegate.swift in Sources */,
 			);

@@ -6,11 +6,11 @@
 //
 
 struct ScoreData {
-    var rank: Int
+    var rank: String
     var country: String
-    var gold: Int
-    var silver: Int
-    var bronze: Int
-    var medalTotal: Int
-    var rankMedalTotal: Int
+    var gold: String
+    var silver: String
+    var bronze: String
+    var medalTotal: String
+    var rankMedalTotal: String
 }
