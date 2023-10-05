@@ -7,10 +7,11 @@
 
 struct ScoreData {
     var rank: String
-    var country: String
+    var nation: String
     var gold: String
     var silver: String
     var bronze: String
-    var medalTotal: String
-    var rankMedalTotal: String
+    var totalMedal: String
+    var totalMedalRank: String
+    var alpha3: String
 }

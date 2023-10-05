@@ -35,12 +35,13 @@ class NetworkManager {
                 if subArray.count == 7 {
                     let scoreData = ScoreData(
                         rank: subArray[0],
-                        country: subArray[1],
+                        nation: subArray[1],
                         gold: subArray[2],
                         silver: subArray[3],
                         bronze: subArray[4],
-                        medalTotal: subArray[5],
-                        rankMedalTotal: subArray[6]
+                        totalMedal: subArray[5],
+                        totalMedalRank: subArray[6],
+                        alpha3: subArray[7]
                     )
                     
                     scoreDatas.append(scoreData)

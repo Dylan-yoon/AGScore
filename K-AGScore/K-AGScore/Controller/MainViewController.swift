@@ -89,7 +89,7 @@ extension MainViewController: UITableViewDataSource {
         cell.goldLabel.text = "50"
         cell.silverLabel.text = "77"
         cell.bronzeLabel.text = "111"
-        cell.totalLabel.text = "222"
+        cell.totalMedalLabel.text = "222"
         
         return cell
     }

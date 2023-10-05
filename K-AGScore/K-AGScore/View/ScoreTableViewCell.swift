@@ -55,7 +55,7 @@ final class ScoreTableViewCell: UITableViewCell {
         return label
     }()
     
-    let totalLabel: UILabel = {
+    let totalMedalLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
@@ -111,7 +111,7 @@ final class ScoreTableViewCell: UITableViewCell {
         medalStackView.addArrangedSubview(goldLabel)
         medalStackView.addArrangedSubview(silverLabel)
         medalStackView.addArrangedSubview(bronzeLabel)
-        medalStackView.addArrangedSubview(totalLabel)
+        medalStackView.addArrangedSubview(totalMedalLabel)
         
         scoreStackView.addArrangedSubview(rankLabel)
         scoreStackView.addArrangedSubview(nationStackView)
