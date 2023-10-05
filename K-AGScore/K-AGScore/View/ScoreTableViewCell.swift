@@ -104,6 +104,16 @@ final class ScoreTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureCell(data: ScoreData) {
+        rankLabel.text = data.rank
+        flagImage.image = UIImage(named: "KOR")
+        nationLabel.text = data.nation
+        goldLabel.text = data.gold
+        silverLabel.text = data.silver
+        bronzeLabel.text = data.bronze
+        totalMedalLabel.text = data.totalMedal
+    }
+    
     private func configureUI() {
         nationStackView.addArrangedSubview(flagImage)
         nationStackView.addArrangedSubview(nationLabel)

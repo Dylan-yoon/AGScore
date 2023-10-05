@@ -8,6 +8,8 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    private var datas: [ScoreData]?
+    
     private let koreaMedalView: UIView = {
         let view = KoreaMedalView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -21,12 +23,20 @@ class MainViewController: UIViewController {
         
         return tableView
     }()
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl: UIRefreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+        return refreshControl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         setupConstraints()
+        refreshData()
     }
     
     private func configureUI() {
@@ -43,6 +53,7 @@ class MainViewController: UIViewController {
         scoreTableView.delegate = self
         scoreTableView.register(ScoreTableViewCell.self, forCellReuseIdentifier: ScoreTableViewCell.reuseIdentifier)
         scoreTableView.register(ScoreTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: ScoreTableViewHeaderView.reuseIdentifier)
+        scoreTableView.refreshControl = refreshControl
     }
     
     private func setupConstraints() {
@@ -69,9 +80,27 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController {
+    @objc private func refreshData() {
+        NetworkManager.parsingData { result in
+            switch result {
+                case .success(let data):
+                    self.datas = data
+                case .failure(let error):
+                    print(error)
+            }
+            
+            DispatchQueue.main.async {
+                self.scoreTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
+}
+
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return datas?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,13 +112,11 @@ extension MainViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.rankLabel.text = "1"
-        cell.flagImage.image = UIImage(named: "KOR")
-        cell.nationLabel.text = "Korea 대한민구우욱"
-        cell.goldLabel.text = "50"
-        cell.silverLabel.text = "77"
-        cell.bronzeLabel.text = "111"
-        cell.totalMedalLabel.text = "222"
+        guard let data = datas?[indexPath.row] else {
+            return UITableViewCell()
+        }
+        
+        cell.configureCell(data: data)
         
         return cell
     }
