@@ -10,7 +10,7 @@ import SwiftSoup
 
 class NetworkManager {
     
-    func parsingData(completion: @escaping (Result<[ScoreData], NetworkError>) -> Void) {
+    static func parsingData(completion: @escaping (Result<[ScoreData], NetworkError>) -> Void) {
         
         let urlAddress = "https://info.hangzhou2022.cn/en/results/all-sports/medal-standings.htm"
         
