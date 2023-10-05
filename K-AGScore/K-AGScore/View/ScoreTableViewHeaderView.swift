@@ -1,5 +1,5 @@
 //
-//  ScoreTableViewCell.swift
+//  ScoreTableViewHeaderView.swift
 //  K-AGScore
 //
 //  Created by MARY on 2023/10/05.
@@ -7,26 +7,23 @@
 
 import UIKit
 
-final class ScoreTableViewCell: UITableViewCell {
+final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
     let rankLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "순위"
+        label.textColor = .white
         
         return label
-    }()
-    
-    let flagImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-
-        return imageView
     }()
     
     let nationLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
+        label.text = "국가"
+        label.textColor = .white
 
         return label
     }()
@@ -35,6 +32,8 @@ final class ScoreTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
+        label.text = "금"
+        label.textColor = .white
 
         return label
     }()
@@ -43,6 +42,8 @@ final class ScoreTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
+        label.text = "은"
+        label.textColor = .white
 
         return label
     }()
@@ -51,6 +52,8 @@ final class ScoreTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
+        label.text = "동"
+        label.textColor = .white
 
         return label
     }()
@@ -59,6 +62,8 @@ final class ScoreTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title3)
         label.textAlignment = .center
+        label.text = "합계"
+        label.textColor = .white
 
         return label
     }()
@@ -93,8 +98,8 @@ final class ScoreTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         
         configureUI()
         setupConstraints()
@@ -103,9 +108,8 @@ final class ScoreTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func configureUI() {
-        nationStackView.addArrangedSubview(flagImage)
         nationStackView.addArrangedSubview(nationLabel)
         
         medalStackView.addArrangedSubview(goldLabel)
@@ -118,6 +122,7 @@ final class ScoreTableViewCell: UITableViewCell {
         scoreStackView.addArrangedSubview(medalStackView)
         
         contentView.addSubview(scoreStackView)
+        contentView.backgroundColor = .systemBlue
     }
     
     private func setupConstraints() {
@@ -132,9 +137,6 @@ final class ScoreTableViewCell: UITableViewCell {
             nationStackView.trailingAnchor.constraint(equalTo: medalStackView.leadingAnchor),
             medalStackView.widthAnchor.constraint(equalTo: scoreStackView.widthAnchor, multiplier: 0.5),
             medalStackView.trailingAnchor.constraint(equalTo: scoreStackView.trailingAnchor),
-            
-            flagImage.widthAnchor.constraint(equalTo: scoreStackView.widthAnchor, multiplier: 0.1),
-            flagImage.heightAnchor.constraint(equalTo: flagImage.widthAnchor),
         ])
     }
 }

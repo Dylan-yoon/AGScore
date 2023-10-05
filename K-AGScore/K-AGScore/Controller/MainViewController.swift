@@ -8,11 +8,11 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    private let koreaView: UIView = {
-        let uiView = UIView()
-        uiView.translatesAutoresizingMaskIntoConstraints = false
+    private let koreaMedalView: UIView = {
+        let view = KoreaMedalView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        return uiView
+        return view
     }()
     
     private let scoreTableView: UITableView = {
@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .systemBackground
-        view.addSubview(koreaView)
+        view.addSubview(koreaMedalView)
         view.addSubview(scoreTableView)
 
         configureTableView()
@@ -40,7 +40,9 @@ class MainViewController: UIViewController {
     
     private func configureTableView() {
         scoreTableView.dataSource = self
+        scoreTableView.delegate = self
         scoreTableView.register(ScoreTableViewCell.self, forCellReuseIdentifier: ScoreTableViewCell.reuseIdentifier)
+        scoreTableView.register(ScoreTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: ScoreTableViewHeaderView.reuseIdentifier)
     }
     
     private func setupConstraints() {
@@ -50,17 +52,16 @@ class MainViewController: UIViewController {
     
     private func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
-            koreaView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            koreaView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
-            koreaView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            koreaView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            koreaView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            koreaMedalView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            koreaMedalView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
+            koreaMedalView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            koreaMedalView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
     }
     
     private func setupKoreaViewConstraints() {
         NSLayoutConstraint.activate([
-            scoreTableView.topAnchor.constraint(equalTo: koreaView.bottomAnchor),
+            scoreTableView.topAnchor.constraint(equalTo: koreaMedalView.bottomAnchor),
             scoreTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scoreTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scoreTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -91,5 +92,15 @@ extension MainViewController: UITableViewDataSource {
         cell.totalLabel.text = "222"
         
         return cell
+    }
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let scoreTableViewHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: ScoreTableViewHeaderView.reuseIdentifier) as? ScoreTableViewHeaderView else {
+            return UIView()
+        }
+        
+        return scoreTableViewHeaderView
     }
 }
