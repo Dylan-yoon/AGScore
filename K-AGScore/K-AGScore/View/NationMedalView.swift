@@ -26,6 +26,7 @@ class NationMedalView: UIView {
         title.text = "Republic OF Korea"
         title.textColor = .label
         title.translatesAutoresizingMaskIntoConstraints = false
+        title.adjustsFontForContentSizeCategory = true
         
         return title
     }()
@@ -47,6 +48,7 @@ class NationMedalView: UIView {
         title.text = "999"
         title.textColor = .label
         title.translatesAutoresizingMaskIntoConstraints = false
+        title.adjustsFontForContentSizeCategory = true
         
         return title
     }()
@@ -59,6 +61,7 @@ class NationMedalView: UIView {
         title.text = "9"
         title.textColor = .label
         title.translatesAutoresizingMaskIntoConstraints = false
+        title.adjustsFontForContentSizeCategory = true
         
         return title
     }()
@@ -71,6 +74,7 @@ class NationMedalView: UIView {
         title.text = "99"
         title.textColor = .label
         title.translatesAutoresizingMaskIntoConstraints = false
+        title.adjustsFontForContentSizeCategory = true
         
         return title
     }()
