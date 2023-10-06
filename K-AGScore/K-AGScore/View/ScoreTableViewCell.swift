@@ -102,7 +102,7 @@ final class ScoreTableViewCell: UITableViewCell {
         
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
-        self.backgroundColor = .purple
+        self.backgroundColor = .label
     }
     
     required init?(coder: NSCoder) {

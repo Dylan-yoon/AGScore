@@ -144,7 +144,7 @@ extension MainViewController: UITableViewDataSource {
         } else if indexPath.row == 2 {
             cell.backgroundColor = UIColor(named: "bronze")
         } else {
-            cell.backgroundColor = UIColor.white
+            cell.backgroundColor = UIColor.clear
         }
         
         return cell
