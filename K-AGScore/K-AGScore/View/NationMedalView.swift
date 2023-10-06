@@ -115,7 +115,7 @@ class NationMedalView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func configureUI() {
         self.addSubview(medalsImage)
         self.addSubview(medalStackView)
@@ -141,7 +141,7 @@ class NationMedalView: UIView {
             medalStackView.topAnchor.constraint(equalTo: medalsImage.bottomAnchor),
             medalStackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 75),
             medalStackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -75),
-            medalStackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
+            medalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }
     

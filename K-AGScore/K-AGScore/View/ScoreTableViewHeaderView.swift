@@ -127,8 +127,8 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            scoreStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            scoreStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+            scoreStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            scoreStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             scoreStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             scoreStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             

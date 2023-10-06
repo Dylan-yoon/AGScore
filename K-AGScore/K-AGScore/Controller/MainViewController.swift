@@ -10,6 +10,14 @@ import UIKit
 class MainViewController: UIViewController {
     private var datas: [ScoreData]?
     
+    private let bannerView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "banner")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return imageView
+    }()
+    
     private let nationMedalView: NationMedalView = {
         let view = NationMedalView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +51,7 @@ class MainViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(nationMedalView)
         view.addSubview(scoreTableView)
+        view.addSubview(bannerView)
 
         configureTableView()
         setupConstraints()
@@ -57,14 +66,23 @@ class MainViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        
+        setupBannerViewConstraints()
         setupTableViewConstraints()
         setupKoreaViewConstraints()
     }
     
+    private func setupBannerViewConstraints() {
+        NSLayoutConstraint.activate([
+            bannerView.topAnchor.constraint(equalTo: view.topAnchor),
+            bannerView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.15),
+            bannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+    }
+    
     private func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
-            nationMedalView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            nationMedalView.topAnchor.constraint(equalTo: bannerView.bottomAnchor),
             nationMedalView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
             nationMedalView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             nationMedalView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -124,6 +142,7 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         nationMedalView.configureView(datas![indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

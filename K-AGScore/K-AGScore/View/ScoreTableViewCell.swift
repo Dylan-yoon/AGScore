@@ -88,6 +88,7 @@ final class ScoreTableViewCell: UITableViewCell {
     private let scoreStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
+        stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
@@ -107,7 +108,8 @@ final class ScoreTableViewCell: UITableViewCell {
     func configureCell(data: ScoreData) {
         rankLabel.text = data.rank
         flagImage.image = UIImage(named: data.alpha3)
-        nationLabel.text = data.nation
+//        nationLabel.text = data.nation
+        nationLabel.text = data.alpha3
         goldLabel.text = data.gold
         silverLabel.text = data.silver
         bronzeLabel.text = data.bronze
