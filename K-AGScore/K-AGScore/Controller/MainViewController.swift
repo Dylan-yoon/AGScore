@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class MainViewController: UIViewController {
     private var datas: [ScoreData]?
@@ -152,6 +153,11 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         nationMedalView.configureView(datas![indexPath.row])
+        
+        guard let url = URL(string: "https://info.hangzhou2022.cn/en/results/all-sports/competition-schedule.htm") else { return }
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController, animated: true, completion: nil)
+
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

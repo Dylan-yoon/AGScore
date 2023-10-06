@@ -14,4 +14,5 @@ struct ScoreData {
     var totalMedal: String
     var totalMedalRank: String
     var alpha3: String
+    var link: String
 }

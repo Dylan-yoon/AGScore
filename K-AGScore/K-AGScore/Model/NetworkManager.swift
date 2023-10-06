@@ -62,9 +62,15 @@ class NetworkManager {
         
         for row in rows {
             let cells = try row.select("td")
-            var subArray = [String]()
             
-            for cell in cells { // [순위, 국가, 금, 은, 동, 전체, 합계순위, 국가]
+            var subArray = [String]()
+            var link = String()
+            
+            for (index, cell) in cells.enumerated() { // [순위, 국가, 금, 은, 동, 전체, 합계순위, 국가]
+                if index == 1 {
+                    let a = try cell.select("a").attr("href")
+                    link = "https://info.hangzhou2022.cn/en/results/all-sports/" + a.components(separatedBy: "/").last!
+                }
                 subArray.append(try cell.text())
             }
             
@@ -77,8 +83,10 @@ class NetworkManager {
                     bronze: subArray[4],
                     totalMedal: subArray[5],
                     totalMedalRank: subArray[6],
-                    alpha3: subArray[7]
+                    alpha3: subArray[7],
+                    link: link
                 )
+                print(link)
                 
                 scoreDatas.append(scoreData)
             }
