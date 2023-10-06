@@ -86,7 +86,6 @@ class NetworkManager {
                     alpha3: subArray[7],
                     link: link
                 )
-                print(link)
                 
                 scoreDatas.append(scoreData)
             }
