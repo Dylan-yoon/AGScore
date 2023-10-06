@@ -9,6 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     private var datas: [ScoreData]?
+    private var showVideo: Bool = true
     
     private let bannerView: UIImageView = {
         let imageView = UIImageView()
@@ -18,8 +19,22 @@ class MainViewController: UIViewController {
         return imageView
     }()
     
+    private var upperView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     private let nationMedalView: NationMedalView = {
         let view = NationMedalView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private let videoView: VideoView = {
+        let view = VideoView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -42,14 +57,18 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        upperView = videoView
+        videoView.playVideo()
+
         configureUI()
         setupConstraints()
         refreshData()
+
     }
     
     private func configureUI() {
         view.backgroundColor = .systemBackground
-        view.addSubview(nationMedalView)
+        view.addSubview(upperView)
         view.addSubview(scoreTableView)
         view.addSubview(bannerView)
         
@@ -68,7 +87,7 @@ class MainViewController: UIViewController {
     private func setupConstraints() {
         setupBannerViewConstraints()
         setupTableViewConstraints()
-        setupKoreaViewConstraints()
+        setupUpperViewConstraints()
     }
     
     private func setupBannerViewConstraints() {
@@ -79,19 +98,19 @@ class MainViewController: UIViewController {
             bannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
-    
-    private func setupTableViewConstraints() {
+
+    private func setupUpperViewConstraints() {
         NSLayoutConstraint.activate([
-            nationMedalView.topAnchor.constraint(equalTo: bannerView.bottomAnchor),
-            nationMedalView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
-            nationMedalView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            nationMedalView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            upperView.topAnchor.constraint(equalTo: bannerView.bottomAnchor),
+            upperView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
+            upperView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            upperView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
     }
     
-    private func setupKoreaViewConstraints() {
+    private func setupTableViewConstraints() {
         NSLayoutConstraint.activate([
-            scoreTableView.topAnchor.constraint(equalTo: nationMedalView.bottomAnchor),
+            scoreTableView.topAnchor.constraint(equalTo: upperView.bottomAnchor),
             scoreTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scoreTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scoreTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -151,6 +170,10 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if showVideo {
+            showVideo = false
+            upperView = nationMedalView
+        }
         nationMedalView.configureView(datas![indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }

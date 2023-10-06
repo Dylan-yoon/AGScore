@@ -7,8 +7,7 @@
 
 import UIKit
 
-class NationMedalView: UIView {
-    
+final class NationMedalView: UIView {
     let imageView: UIImageView = {
         let imageView = UIImageView()
         
