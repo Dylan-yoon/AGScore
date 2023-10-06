@@ -21,19 +21,20 @@ class NationMedalView: UIView {
     let title: UILabel = {
         let title = UILabel()
         
-        title.font = .preferredFont(forTextStyle: .title3)
-        title.textAlignment = .center
-        title.text = "Republic OF Korea"
+        title.font = .preferredFont(forTextStyle: .headline)
+        title.textAlignment = .left
         title.textColor = .label
         title.translatesAutoresizingMaskIntoConstraints = false
         title.adjustsFontForContentSizeCategory = true
+        title.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        title.setContentHuggingPriority(.defaultLow, for: .horizontal)
         
         return title
     }()
     
     let medalsImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "medal_View")
+        imageView.image = UIImage(named: "allMedal_IMG")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -43,10 +44,9 @@ class NationMedalView: UIView {
     let gold: UILabel = {
         let title = UILabel()
         
-        title.font = .preferredFont(forTextStyle: .title3)
+        title.font = .boldSystemFont(ofSize: 40)
         title.textAlignment = .center
-        title.text = "999"
-        title.textColor = .label
+        title.textColor = .black
         title.translatesAutoresizingMaskIntoConstraints = false
         title.adjustsFontForContentSizeCategory = true
         
@@ -56,10 +56,9 @@ class NationMedalView: UIView {
     let silver: UILabel = {
         let title = UILabel()
         
-        title.font = .preferredFont(forTextStyle: .title3)
+        title.font = .boldSystemFont(ofSize: 40)
         title.textAlignment = .center
-        title.text = "9"
-        title.textColor = .label
+        title.textColor = .black
         title.translatesAutoresizingMaskIntoConstraints = false
         title.adjustsFontForContentSizeCategory = true
         
@@ -69,10 +68,9 @@ class NationMedalView: UIView {
     let bronze: UILabel = {
         let title = UILabel()
         
-        title.font = .preferredFont(forTextStyle: .title3)
+        title.font = .boldSystemFont(ofSize: 40)
         title.textAlignment = .center
-        title.text = "99"
-        title.textColor = .label
+        title.textColor = .black
         title.translatesAutoresizingMaskIntoConstraints = false
         title.adjustsFontForContentSizeCategory = true
         
@@ -85,9 +83,8 @@ class NationMedalView: UIView {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.spacing = 2
+        stackView.spacing = 6
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
         return stackView
     }()
@@ -97,7 +94,7 @@ class NationMedalView: UIView {
         
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillEqually
         stackView.spacing = 2
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -133,15 +130,18 @@ class NationMedalView: UIView {
             nationStackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             nationStackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
             
-            
             medalsImage.topAnchor.constraint(equalTo: nationStackView.bottomAnchor, constant: 10),
             medalsImage.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             medalsImage.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
+            medalsImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            medalStackView.topAnchor.constraint(equalTo: medalsImage.bottomAnchor),
-            medalStackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 75),
-            medalStackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -75),
-            medalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            medalStackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 15),
+            medalStackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -15),
+            medalStackView.centerYAnchor.constraint(equalTo: medalsImage.centerYAnchor, constant: 35),
+            medalStackView.heightAnchor.constraint(equalToConstant: 50),
+            
+            imageView.widthAnchor.constraint(equalTo: nationStackView.widthAnchor, multiplier: 0.1),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
         ])
     }
     
