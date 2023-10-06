@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
         
         return refreshControl
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
         view.addSubview(nationMedalView)
         view.addSubview(scoreTableView)
         view.addSubview(bannerView)
-
+        
         configureTableView()
         setupConstraints()
     }
@@ -136,6 +136,16 @@ extension MainViewController: UITableViewDataSource {
         }
         
         cell.configureCell(data: data)
+        
+        if indexPath.row == 0 {
+            cell.backgroundColor = UIColor(named: "gold")
+        } else if indexPath.row == 1 {
+            cell.backgroundColor = UIColor(named: "silver")
+        } else if indexPath.row == 2 {
+            cell.backgroundColor = UIColor(named: "bronze")
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
         
         return cell
     }

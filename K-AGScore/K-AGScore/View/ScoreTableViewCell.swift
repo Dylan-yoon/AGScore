@@ -99,6 +99,10 @@ final class ScoreTableViewCell: UITableViewCell {
         
         configureUI()
         setupConstraints()
+        
+        self.layer.cornerRadius = 10
+        self.layer.masksToBounds = true
+        self.backgroundColor = .purple
     }
     
     required init?(coder: NSCoder) {

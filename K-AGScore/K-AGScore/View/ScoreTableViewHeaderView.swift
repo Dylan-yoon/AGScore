@@ -103,6 +103,9 @@ final class ScoreTableViewHeaderView: UITableViewHeaderFooterView {
         
         configureUI()
         setupConstraints()
+        
+        self.layer.cornerRadius = 10
+        self.layer.masksToBounds = true
     }
     
     required init?(coder: NSCoder) {
