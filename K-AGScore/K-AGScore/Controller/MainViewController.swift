@@ -154,11 +154,22 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         nationMedalView.configureView(datas![indexPath.row])
         
-        guard let url = URL(string: "https://info.hangzhou2022.cn/en/results/all-sports/competition-schedule.htm") else { return }
-            let safariViewController = SFSafariViewController(url: url)
-            present(safariViewController, animated: true, completion: nil)
-
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let link = datas![indexPath.row].link
+        
+        let openURL = UIContextualAction(style: .normal, title: "메달 정보") {_,_,_ in
+            guard let url = URL(string: link) else { return }
+            let safariViewController = SFSafariViewController(url: url)
+            self.present(safariViewController, animated: true, completion: nil)
+        }
+        
+        let actions = UISwipeActionsConfiguration(actions: [openURL])
+        
+        return actions
     }
 }
 
