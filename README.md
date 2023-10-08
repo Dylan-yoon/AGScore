@@ -23,7 +23,7 @@
 
 ## 🏃‍♀️실행화면
 
-| <img src="https://github.com/Dylan-yoon/AGScore/assets/77507952/c24cd56b-47e8-4945-9d26-4f9fea9084f1" width=150> | <img src="https://github.com/Dylan-yoon/AGScore/assets/77507952/9d099292-7425-42ec-8314-9d072d2ade7e" width=150> | <img src="https://github.com/Dylan-yoon/AGScore/assets/77507952/79ab3b45-1bd4-4a63-a4a7-c8a875b7c1ab" width=150> | <img src="https://github.com/Dylan-yoon/AGScore/assets/77507952/e0ea1462-b544-4f91-8e01-1b4a896f71b9" width=150> |
+| <img src="https://github.com/Dylan-yoon/AGScore/assets/77507952/91fe3c0b-832c-40d7-8d51-00def16c136c" width=150> | <img src="https://github.com/Dylan-yoon/AGScore/assets/77507952/3c00ce69-e5e3-4b66-b6ca-c5ddaa5b2b60" width=150> | <img src="https://github.com/Dylan-yoon/AGScore/assets/77507952/b7d11694-dfdc-4548-86bc-8316c67b1b48" width=150> | <img src="https://github.com/Dylan-yoon/AGScore/assets/77507952/572c814e-b574-4936-8fff-8ed282f2d8ea" width=150> | 
 |:-:|:-:|:-:|:-:|
 | dynamicType | darkMode | refresh | swipAction |
 
